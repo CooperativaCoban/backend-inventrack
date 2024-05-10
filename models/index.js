@@ -1,0 +1,1 @@
+export { default as initRole } from "./Role.js"
