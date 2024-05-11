@@ -1,6 +1,8 @@
 import { DataTypes, Sequelize } from "sequelize";
 import "dotenv/config";
 import { initRole } from "../models/index.js";
+import { initUser } from "../models/index.js";
+
 
 // Creación de una nueva instancia de Sequelize para la conexión a la base de datos
 const db = new Sequelize(process.env.BD, process.env.USER, process.env.PASS, {
@@ -26,9 +28,10 @@ try {
 // Inicialización de los modelos de la base de datos
 
 const Role = initRole(db,DataTypes)
+const User = initUser(db,DataTypes)
 
-/* //llave primaria de rol a llave foranea de usuario
-User.belongsTo(Role, { foreignKey: "pk_rol" }); // un usuario puede tener un rol
-Role.hasMany(User, { foreignKey: "pk_rol" }); // un rol puede tener varios usuarios */
+//llave primaria de rol a llave foranea de usuario
+User.belongsTo(Role, { foreignKey: "pk_role" }); // un usuario puede tener un rol
+Role.hasMany(User, { foreignKey: "pk_role" }); // un rol puede tener varios usuarios
 
 export { db };

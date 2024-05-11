@@ -3,6 +3,7 @@ import cors from "cors"
 import { db } from "../database/connection.js"
 import fileUpload from "express-fileupload";
 import { routerRole } from "../routes/role.js";
+import { routerUser } from "../routes/user.js";
 
 
 const whiteList = ['http://localhost:3000'];
@@ -23,12 +24,9 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
-        this.patientPath = '/api/patient'
         this.rolePath = '/api/role'
-        this.appoimentPath = '/api/appoiment'
         this.userPath = '/api/user'
-        this.livingPath = '/api/livingPlace'
-        this.authPath = '/api/auth';
+     
 
         //Conexion a bd
         this.dbConnection();
@@ -71,6 +69,7 @@ class Server {
     routes() {
         
         this.app.use(this.rolePath, routerRole)
+        this.app.use(this.userPath, routerUser)
     
      
     }
