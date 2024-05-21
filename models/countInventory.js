@@ -1,53 +1,63 @@
 import { Model } from "sequelize";
 
-export class Collaborator extends Model {}
+export class countInventory extends Model {}
 
 export default (db, DataTypes) => {
-  Collaborator.init( {
+  countInventory.init( {
 	
-    pk_collaborator: {
+    pk_countinventory: {
 		type: DataTypes.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true,
 	},
 
-	name: {
+	product: {
 		type: DataTypes.STRING,
         allowNull: false,
 	},
 
-    lastname: {
+    category: {
 		type: DataTypes.STRING,
         allowNull: false,
 	},
 
-    post: {
+    supplier: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 
-    area: {
-        type: DataTypes.STRING,
+
+    d_date: {
+        type: DataTypes.DATE,
         allowNull: false,
     },
 
-    department: {
-        type: DataTypes.STRING,
+    amount: {
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 
+    unitprice: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    },
+
+    totalprice: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    },
 
 },
 {
     sequelize:db, 
-    modelName: 'collaborator',
-    tableName: "t_collaborator",
+    modelName: 'countInventory',
+    tableName: "t_countinventory",
     timestamps: true,
     paranoid: true
   })
 
-  return Collaborator;
+  return countInventory;
 };
 
 

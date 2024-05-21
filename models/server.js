@@ -4,6 +4,10 @@ import { db } from "../database/connection.js"
 import fileUpload from "express-fileupload";
 import { routerRole } from "../routes/role.js";
 import { routerUser } from "../routes/user.js";
+import { routerCollaborator } from "../routes/collaborator.js";
+import { routerCountInventory } from "../routes/countInventory.js";
+import { routerComInventory } from "../routes/comInventory.js";
+import { routerThInventory } from "../routes/thInventory.js";
 
 
 const whiteList = ['http://localhost:3000'];
@@ -26,6 +30,10 @@ class Server {
         this.port = process.env.PORT;
         this.rolePath = '/api/role'
         this.userPath = '/api/user'
+        this.collaboratorPath = '/api/collaborator'
+        this.countInventoryPath = '/api/countInventory'
+        this.comInventoryPath = '/api/comInventory'
+        this.thInventoryPath = '/api/thInventory'
      
 
         //Conexion a bd
@@ -70,6 +78,10 @@ class Server {
         
         this.app.use(this.rolePath, routerRole)
         this.app.use(this.userPath, routerUser)
+        this.app.use(this.collaboratorPath, routerCollaborator)
+        this.app.use(this.countInventoryPath, routerCountInventory)
+        this.app.use(this.comInventoryPath, routerComInventory)
+        this.app.use(this.thInventoryPath, routerThInventory)
     
      
     }

@@ -2,6 +2,11 @@ import { DataTypes, Sequelize } from "sequelize";
 import "dotenv/config";
 import { initRole } from "../models/index.js";
 import { initUser } from "../models/index.js";
+import { initCollaborator } from "../models/index.js";
+import { initCountInventory } from "../models/index.js";
+import { initComInventory } from "../models/index.js";
+import { initThInventory } from "../models/index.js";
+
 
 
 // Creación de una nueva instancia de Sequelize para la conexión a la base de datos
@@ -29,6 +34,12 @@ try {
 
 const Role = initRole(db,DataTypes)
 const User = initUser(db,DataTypes)
+const Collaborator = initCollaborator(db,DataTypes)
+const countInventory = initCountInventory(db,DataTypes)
+const comInventory = initComInventory(db,DataTypes)
+const thInventory = initThInventory(db,DataTypes)
+
+
 
 //llave primaria de rol a llave foranea de usuario
 User.belongsTo(Role, { foreignKey: "pk_role" }); // un usuario puede tener un rol
