@@ -8,6 +8,8 @@ import { routerCollaborator } from "../routes/collaborator.js";
 import { routerCountInventory } from "../routes/countInventory.js";
 import { routerComInventory } from "../routes/comInventory.js";
 import { routerThInventory } from "../routes/thInventory.js";
+import { routerAuth } from "../routes/auth.js";
+
 
 
 const whiteList = ['http://localhost:3000'];
@@ -30,10 +32,12 @@ class Server {
         this.port = process.env.PORT;
         this.rolePath = '/api/role'
         this.userPath = '/api/user'
+        this.authPath = '/api/auth';
         this.collaboratorPath = '/api/collaborator'
         this.countInventoryPath = '/api/countInventory'
         this.comInventoryPath = '/api/comInventory'
         this.thInventoryPath = '/api/thInventory'
+
      
 
         //Conexion a bd
@@ -78,10 +82,13 @@ class Server {
         
         this.app.use(this.rolePath, routerRole)
         this.app.use(this.userPath, routerUser)
+        this.app.use(this.authPath, routerAuth)
         this.app.use(this.collaboratorPath, routerCollaborator)
         this.app.use(this.countInventoryPath, routerCountInventory)
         this.app.use(this.comInventoryPath, routerComInventory)
         this.app.use(this.thInventoryPath, routerThInventory)
+        this.app.use(this.thInventoryPath, routerThInventory)
+
     
      
     }

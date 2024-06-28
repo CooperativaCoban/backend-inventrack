@@ -119,9 +119,10 @@ const rolePut = async (req = request, res = response) => {
 
     if (!roles) {
       return res.status(404).json({
-        msg: "No se encontró el role.",
+        msg: "No se encontró el rol.",
       });
     }
+
 
     // Actualiza la información del role con el método update
 
@@ -154,12 +155,12 @@ const roleDelete = async (req, res = response) => {
       });
     } else {
       res.status(404).json({
-        msg: "No se encontró el role.",
+        msg: "No se encontró el rol.",
       });
     }
   } catch (error) {
     res.status(500).json({
-      msg: "Ocurrió un error al intentar eliminar el role.",
+      msg: "Ocurrió un error al intentar eliminar el rol.",
       error,
     });
   }
