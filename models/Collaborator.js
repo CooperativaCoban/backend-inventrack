@@ -17,11 +17,6 @@ export default (db, DataTypes) => {
         allowNull: false,
 	},
 
-    lastname: {
-		type: DataTypes.STRING,
-        allowNull: false,
-	},
-
     post: {
         type: DataTypes.STRING,
         allowNull: false,

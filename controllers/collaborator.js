@@ -37,7 +37,6 @@ const collaboratorGet = async (req = request, res = response) => {
       attributes: [
         "pk_collaborator",
         "name",
-        "lastname",
         "post",
         "area",
         "department",
@@ -63,12 +62,11 @@ const collaboratorGet = async (req = request, res = response) => {
 
 const collaboratorPost = async (req, res = response) => {
   //const body = req.body;
-  const { name, lastname, post, area, department} = req.body;
+  const { name, post, area, department} = req.body;
 
   try {
     const collaborators = new Collaborator({
       name,
-      lastname,
       post,
       area,
       department,
@@ -91,7 +89,7 @@ const collaboratorPost = async (req, res = response) => {
 
 const collaboratorPut = async (req = request, res = response) => {
   const pk = req.params.pk;
-  const { name, lastname, post, area, department} = req.body;
+  const { name, post, area, department} = req.body;
 
   try {
     // Busca el rol por su id
@@ -107,7 +105,6 @@ const collaboratorPut = async (req = request, res = response) => {
 
     await _collaborator.update({
       name,
-      lastname,
       post,
       area,
       department,

@@ -9,7 +9,9 @@ import { routerCountInventory } from "../routes/countInventory.js";
 import { routerComInventory } from "../routes/comInventory.js";
 import { routerThInventory } from "../routes/thInventory.js";
 import { routerAuth } from "../routes/auth.js";
-
+import { routerCountReport } from "../routes/countReport.js";
+import { routerArea } from "../routes/area.js";
+import { routerPost } from "../routes/post.js";
 
 
 const whiteList = ['http://localhost:3000'];
@@ -37,7 +39,9 @@ class Server {
         this.countInventoryPath = '/api/countInventory'
         this.comInventoryPath = '/api/comInventory'
         this.thInventoryPath = '/api/thInventory'
-
+        this.countReportPath = '/api/countReport'
+        this.areaPath = '/api/area'
+        this.postPath = '/api/post'
      
 
         //Conexion a bd
@@ -88,7 +92,9 @@ class Server {
         this.app.use(this.comInventoryPath, routerComInventory)
         this.app.use(this.thInventoryPath, routerThInventory)
         this.app.use(this.thInventoryPath, routerThInventory)
-
+        this.app.use(this.countReportPath, routerCountReport)
+        this.app.use(this.areaPath, routerArea)
+        this.app.use(this.postPath, routerPost)
     
      
     }

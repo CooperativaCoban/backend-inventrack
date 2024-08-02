@@ -14,38 +14,38 @@ export default (db, DataTypes) => {
 
 	product: {
 		type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
 	},
 
     category: {
 		type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
 	},
 
     supplier: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
     },
 
 
     d_date: {
         type: DataTypes.DATE,
-        allowNull: true,
+        allowNull: false,
     },
 
     amount: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
     },
 
     unitprice: {
         type: DataTypes.DECIMAL,
-        allowNull: true,
+        allowNull: false,
     },
 
     totalprice: {
         type: DataTypes.DECIMAL,
-        allowNull: true,
+        allowNull: false,
     },
 
 },

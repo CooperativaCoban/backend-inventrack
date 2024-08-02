@@ -34,6 +34,41 @@ const countInventoryGet = async (req = request, res = response) => {
           [Op.like]: "%" + search + "%",
         },
       },
+      where: {
+        product: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        category: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        supplier: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        d_date: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        amount: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        unitprice: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        totalprice: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
       attributes: [
         "pk_countinventory",
         "product",
@@ -52,7 +87,43 @@ const countInventoryGet = async (req = request, res = response) => {
           [Op.like]: "%" + search + "%",
         },
       },
-    });
+      where: {
+        product: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        category: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        supplier: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        d_date: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        amount: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        unitprice: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+      where: {
+        totalprice: {
+          [Op.like]: "%" + search + "%",
+        },
+      },
+    }
+  );
     res.json({
       countInventorys,
       cantidad: count,
@@ -99,9 +170,9 @@ const countInventoryPut = async (req = request, res = response) => {
 
   try {
     // Busca el rol por su id
-    const _countInventory = await countInventory.findByPk(pk);
+    const countInventorys = await countInventory.findByPk(pk);
 
-    if (!_countInventory) {
+    if (!countInventorys) {
       return res.status(404).json({
         msg: "No se encontró el producto.",
       });
@@ -109,7 +180,7 @@ const countInventoryPut = async (req = request, res = response) => {
 
     // Actualiza la información del colaborador con el método update
 
-    await _countInventory.update({
+    await countInventorys.update({
       product,
       category,
       supplier,
@@ -121,7 +192,7 @@ const countInventoryPut = async (req = request, res = response) => {
 
     res.json({
       msg: "producto actualizado",
-      product: _countInventory,
+      product: countInventorys,
     });
   } catch (error) {
     res.status(500).json({
