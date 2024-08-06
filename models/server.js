@@ -10,6 +10,7 @@ import { routerComInventory } from "../routes/comInventory.js";
 import { routerThInventory } from "../routes/thInventory.js";
 import { routerAuth } from "../routes/auth.js";
 import { routerCountReport } from "../routes/countReport.js";
+import { routerComReport } from "../routes/comReport.js";
 import { routerArea } from "../routes/area.js";
 import { routerPost } from "../routes/post.js";
 
@@ -42,6 +43,7 @@ class Server {
         this.countReportPath = '/api/countReport'
         this.areaPath = '/api/area'
         this.postPath = '/api/post'
+        this.comReportPath = '/api/comReport'
      
 
         //Conexion a bd
@@ -95,6 +97,7 @@ class Server {
         this.app.use(this.countReportPath, routerCountReport)
         this.app.use(this.areaPath, routerArea)
         this.app.use(this.postPath, routerPost)
+        this.app.use(this.comReportPath, routerComReport)
     
      
     }
