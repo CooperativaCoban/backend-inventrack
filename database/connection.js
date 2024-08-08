@@ -1,11 +1,12 @@
 import { DataTypes, Sequelize } from "sequelize";
 import "dotenv/config";
-import { initRole } from "../models/index.js";
+import { initRole} from "../models/index.js";
 import { initUser } from "../models/index.js";
 import { initCollaborator } from "../models/index.js";
 import { initCountInventory } from "../models/index.js";
 import { initComInventory } from "../models/index.js";
 import { initThInventory } from "../models/index.js";
+import { initThReport } from "../models/index.js";
 import { initCountReport } from "../models/index.js";
 import { initComReport } from "../models/index.js";
 import { initArea } from "../models/index.js";
@@ -43,6 +44,7 @@ const Collaborator = initCollaborator(db,DataTypes)
 const countInventory = initCountInventory(db,DataTypes)
 const comInventory = initComInventory(db,DataTypes)
 const thInventory = initThInventory(db,DataTypes)
+const thReport = initThReport(db,DataTypes)
 const countReport = initCountReport(db,DataTypes)
 const comReport = initComReport(db,DataTypes)
 const Area = initArea(db,DataTypes)
@@ -75,7 +77,7 @@ Post.hasMany(countReport, {foreignKey: "pk_post"}) // un colaborador puede tener
 countReport.belongsTo(Post, {foreignKey: "pk_post"}) // un reporte puede tener un colaborador
 
 //--------------------------------------------------------------------------------------------------------------
-
+//informatica
 //llave primaria de countInventory a llave foranea de countReport
 comInventory.hasMany(comReport, {foreignKey: "pk_cominventory"}) // un articulo puede tener un  reportes
 comReport.belongsTo(comInventory, {foreignKey: "pk_cominventory"} ) // un reporte puede tener varios articulos
@@ -95,6 +97,30 @@ comReport.belongsTo(Area, {foreignKey: "pk_area"}) // un reporte puede tener un 
 //llave primaria de post a llave foranea de CountReport
 Post.hasMany(comReport, {foreignKey: "pk_post"}) // un colaborador puede tener varios reportes
 comReport.belongsTo(Post, {foreignKey: "pk_post"}) // un reporte puede tener un colaborador
+
+
+//--------------------------------------------------------------------------------------------------------------
+//talento humano
+//llave primaria de countInventory a llave foranea de countReport
+thInventory.hasMany(thReport, {foreignKey: "pk_thinventory"}) // un articulo puede tener un  reportes
+thReport.belongsTo(thInventory, {foreignKey: "pk_thinventory"} ) // un reporte puede tener varios articulos
+
+//llave primaria de usuario a llave foranea de countreport
+User.hasMany(thReport, {foreignKey: "pk_user"}) //un usuario puede tener varios reportes
+thReport.belongsTo(User, {foreignKey: "pk_user"}) // un reporte puede tener un usuario
+
+//llave primaria de colaborador a llave foranea de CountReport
+Collaborator.hasMany(thReport, {foreignKey: "pk_collaborator"}) // un colaborador puede tener varios reportes
+thReport.belongsTo(Collaborator, {foreignKey: "pk_collaborator"}) // un reporte puede tener un colaborador
+
+//llave primaria de area a llave foranea de CountReport
+Area.hasMany(thReport, {foreignKey: "pk_area"}) // un colaborador puede tener varios reportes
+thReport.belongsTo(Area, {foreignKey: "pk_area"}) // un reporte puede tener un colaborador
+
+//llave primaria de post a llave foranea de CountReport
+Post.hasMany(thReport, {foreignKey: "pk_post"}) // un colaborador puede tener varios reportes
+thReport.belongsTo(Post, {foreignKey: "pk_post"}) // un reporte puede tener un colaborador
+
 
 
 
