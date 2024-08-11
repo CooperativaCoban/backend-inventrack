@@ -1,7 +1,6 @@
 import { User } from "../models/User.js";
 import { response } from "express";
 import { generateJWT } from "../helpers/generateJWT.js";
-import { Sequelize } from "sequelize";
 
 const login = async (req, res = response) => {
   const { user, password } = req.body;
